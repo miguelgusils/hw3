@@ -6,12 +6,12 @@ from passlib.hash import sha256_crypt
 #import Heroku
 ## To run from Heroku ##
 from flask_heroku import Heroku
-#app = Flask(__name__)
-#heroku = Heroku(app)
+app = Flask(__name__)
+heroku = Heroku(app)
 
 ## To run Local ##
-app = Flask(__name__)
-app.config['SQLALCHEMY_DATABASE_URI'] = 'postgresql://localhost/hw3_db'
+#app = Flask(__name__)
+#app.config['SQLALCHEMY_DATABASE_URI'] = 'postgresql://localhost/hw3_db'
 
 app.secret_key = "cscie14a-hw3"
 db.init_app(app)
