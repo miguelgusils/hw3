@@ -1,0 +1,80 @@
+{% extends "layout.html" %}
+{% block content %}
+
+    <header class="masthead d-flex">
+      <div class="container text-center my-auto">
+      <!-- Welcome user -->
+      {% if session_username is defined %}
+          <h1 class="login-form">Hi, {{ session_username }} !</h1>
+
+      {% else %}
+          <h1 class="login-form">Hi, guest!</h1>
+
+      {% endif %}
+
+
+        {% if session_username is defined %}
+              <h2 class="mb-2"> You and Your Followers</h2>
+        {% else %}
+              <h5 class="mb-2"> <i>All posts are listed here. To create a followers group, please log-in or sign-up.</i></h5>
+        {% endif %}
+
+              <div style="padding-top:30;
+              padding-bottom:30;
+              background-color:#ffffff55;
+              -moz-border-radius: 5px;
+              -webkit-border-radius: 5px;">
+
+              <!-- List posts -->
+              {% for p in posts %}
+                <p class="login-form"> Author number{{ p.author }}: {{ p.content }}</p>
+              {% endfor %}
+
+             </div>
+             <br>
+
+     <div class="input-group-prepend">
+
+      <!-- New Post button -->
+
+      <!-- Logout button -->
+
+      <!-- Login button -->
+
+      <!-- Signup button -->
+            {% if session_username is defined %}
+
+      <form action="/newpost" method="GET">
+        <button type="submit" class="btn btn-primary btn-lg"> New Post </button>
+      </form>
+      <form action="/logout" method="POST">
+        <button type="submit" class="btn btn-primary btn-lg"> Log out </button>
+      </form>
+
+      {% else %}
+
+      <form action="/login" method="GET">
+        <button type="submit" class="btn btn-primary btn-lg"> Log in </button>
+      </form>
+      <form action="/signup" method="GET">
+        <button type="submit" class="btn btn-primary btn-lg"> Sign up </button>
+      </form>
+
+  {% endif %}
+
+
+       <form class="form-inline" action="/search" method="POST">
+
+           <!-- Search box -->
+           <!-- Search button -->
+          <input class="form-control mr-sm-2" type="search"
+                placeholder="Search" name="search" aria-label="Search">
+          <button class="btn btn-primary btn-lg" type="submit">Search</button>
+
+      </form>
+
+</div>
+
+</header>
+
+{% endblock %}
