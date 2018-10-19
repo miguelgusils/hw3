@@ -16,5 +16,3 @@ class SignupForm(FlaskForm):
 class NewpostForm(FlaskForm):
 	content = TextAreaField('Content', validators=[DataRequired()])
 	submit = SubmitField('Post')
-
-
